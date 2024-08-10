@@ -13,7 +13,7 @@ function CoursesSection() {
                 </h3>
             </div>
             <div className='col-start-7 col-end-13 max-w-[416px] max-md:mt-5 xl:col-start-8 xxl:col-start-9'>
-                <p className='tracking-wide'>Welcome to our diverse and dynamic course catalog. we're dedicated to providing you with access to high-quality education</p>
+                <p className='tracking-wide'>Welcome to our diverse and dynamic course catalog. we&apos;re dedicated to providing you with access to high-quality education</p>
                 <div className='pt-6'>
                     <CustomLink text='See All Courses' url='/' isExternal={false} />
                 </div>
