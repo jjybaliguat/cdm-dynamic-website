@@ -5,12 +5,18 @@ export interface PageProps {
     searchParams: {};
   }  
 export interface HeroSectionProps {
-    data: {
-        heading: string,
-        subHeading: string,
-        image: ImageProps,
-        buttonLink: ButtonLink
-    }
+    id: number;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    blocks: [
+        {
+            heading: string,
+            subHeading: string,
+            image: ImageProps,
+            buttonLink: ButtonLink
+        }
+    ]
 }
 export interface FeatureSectionProps {
     data: {

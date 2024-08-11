@@ -8,12 +8,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <HeroSection data={{
-        heading: 'Discover Your Lifelong Learning',
-        subHeading: 'Discover a personalized learning odyssey tailored to your aspirations. Uncover the pathways that lead to academic and personal growth.',
-        image: {url: '/hero-image.png', alternativeText: 'hero-image'},
-        buttonLink: {theme: 'ghost', url: '/', label: 'Explore More', isExternal: false}
-      }} />
+      <HeroSection />
       <CoursesSection data={{
         heading: 'Explore Our Courses And Build Skills',
         subHeading: 'Welcome to our diverse and dynamic course catalog. were dedicated to providing you with access to high-quality education',

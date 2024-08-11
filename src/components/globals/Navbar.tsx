@@ -40,8 +40,13 @@ async function loader(){
     const url = new URL(path, baseUrl)
     url.search = query
 
-    const data = await fetchData(url.href)
-    return data
+    try {
+      const data = await fetchData(url.href)
+      return data
+    } catch (error) {
+      console.log(error)
+      return null
+    }
 
 }
 
