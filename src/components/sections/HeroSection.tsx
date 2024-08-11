@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { ArrowUpRight, CheckCircleIcon, CircleCheck, PlusIcon } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import Image from 'next/image'
+import { HeroSectionProps } from '@/types'
+import { cn } from '@/lib/utils'
 
-function HeroSection() {
+function HeroSection({data}: Readonly<HeroSectionProps>) {
   return (
     <section className='overflow-clip pt-12'>
         <div className='container'>
@@ -16,17 +18,23 @@ function HeroSection() {
                         opacity: 1,
                         transform: 'none'
                     }}>
-                        <h1 className='h1 font-semibold max-md:text-center'>Discover Your Lifelong Learning</h1>
+                        <h1 className='h1 font-semibold max-md:text-center'>{data.heading}</h1>
                     </div>
                 </div>
-                <div className=' col-start-9 col-end-13 w-fit max-md:padding-all-32 lg:col-start-10 xxl:col-start-11'>
-                    <a
+                <div className='col-start-9 col-end-13 w-fit max-md:padding-all-32 lg:col-start-10 xxl:col-start-11'>
+                    <Link
                         href=''
-                        className='h6 hover:bg-primary hover:text-primary-foreground group transition-all ease-in-out duration-300 flex items-center justify-center gap-1 rounded-full border border-neutral-500 font-semibold hover:bg-primaryColor max-md:p-5  md:px-8 md:py-[84px]'
+                        target={data.buttonLink.isExternal? '_blank' : ''}
+                        className={cn({
+                            'hover:text-white group transition-all ease-in-out duration-300 flex items-center justify-center gap-1 rounded-full border border-neutral-500 font-semibold max-md:p-5  md:px-8 md:py-[84px]': true,
+                            'bg-primary text-primary-foreground': data.buttonLink.theme == 'primary',
+                            'bg-secondary text-secondary-foreground': data.buttonLink.theme == 'secondary',
+                            'btn-ghost': data.buttonLink.theme == 'ghost',
+                        })}
                     >
-                        <span>Explore More</span>
+                        <span>{data.buttonLink.label}</span>
                         <ArrowUpRight />
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div className='grid-cols-12 flex-col items-center justify-between gap-6 md:pt-10 max-md:flex max-md:items-center md:grid'>
@@ -61,7 +69,7 @@ function HeroSection() {
                     opacity: 1,
                     transform: 'none'
                 }}>
-                    <p className='text-[20px] font-medium'>Discover a personalized learning odyssey tailored to your aspirations. Uncover the pathways that lead to academic and personal growth.</p>
+                    <p className='text-[20px] font-medium'>{data.subHeading}</p>
                 </div>
             </div>
             <div className='pt-12 relative'>
@@ -86,8 +94,8 @@ function HeroSection() {
                 </div>
                 <div className='relative'>
                     <Image
-                        src="/hero-image.png"
-                        alt="hero-image"
+                        src={data.image.url}
+                        alt={data.image.alternativeText? data.image.alternativeText : ''}
                         width={1608}
                         height={446}
                         className='max-w-[unset]'

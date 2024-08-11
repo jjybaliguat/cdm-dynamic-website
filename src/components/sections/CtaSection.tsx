@@ -1,23 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import ButtonLink from '../ui/ButtonLink'
-
-interface CtaProps {
-    data: {
-        heading: string,
-        subHeading: string,
-        buttonLink: {
-            theme: string,
-            url: string,
-            label: string,
-            isExternal: boolean
-        },
-        image: {
-            url: string,
-            alternativeText: string | null
-        }
-    }
-}
+import { CtaProps } from '@/types'
 
 function CtaSection({
     data

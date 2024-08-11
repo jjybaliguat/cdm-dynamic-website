@@ -1,17 +1,10 @@
+import { LinkProps } from '@/types'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-interface LinkProps {
-    text: string,
-    url: string,
-    isExternal: boolean
-}
-
 function CustomLink({
-    text,
-    url,
-    isExternal,
+    text, url, isExternal
 }: Readonly<LinkProps>) {
   return (
     <Link href={url} target={isExternal? '_blank' : ''} className='group/link cursor-pointer theme-transition-500 flex w-fit items-center gap-1 border-b border-neutral-700 pb-1 font-semibold hover:border-secondary hover:text-neutral-500'>

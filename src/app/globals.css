@@ -82,6 +82,10 @@
     @apply text-[50px] md:text-[70px] lg:text-[100px] tracking-wider;
   }
 
+  .btn-ghost{
+    @apply hover:bg-primary text-black;
+  }
+
   .profile-pile {
     display: flex;
     align-items: center;
@@ -121,16 +125,6 @@
   .section-heading{
     @apply text-[32px] md:text-[40px] lg:text-[48px] font-semibold tracking-wide;
   }
-  .animate-ping-small{
-    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-  .animate-pulse-smooth{
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .animate-spin-slow{
-    animation: spin 8s linear infinite;;
-  }
 
   .theme-transition-300{
     @apply transition-all ease-in-out duration-300
@@ -139,26 +133,120 @@
     @apply transition-all ease-in-out duration-500
   }
 
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
+@keyframes pingDefault {
+    75%,to {
+        transform: scale(2.5);
+        opacity: 0
     }
-    to {
-      transform: rotate(360deg);
+}
+
+.animate-ping-default {
+    animation: pingDefault 5s linear infinite
+}
+
+@keyframes pinkSmall {
+    0%,to {
+        transform: scale(1)
     }
-  }
-  @keyframes ping {
-    25%, 50%, 75%, 100% {
-      transform: scale(1.3);
-      opacity: 0.9;
+
+    10%,90% {
+        transform: scale(1.2)
     }
-  }
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
+
+    20%,80% {
+        transform: scale(1.15)
     }
+
+    30%,70% {
+        transform: scale(1.25)
+    }
+
+    40%,60% {
+        transform: scale(1.1)
+    }
+
     50% {
-      opacity: .5;
+        transform: scale(1.5)
     }
-  }
+}
+
+.animate-ping-small {
+    animation: pinkSmall 8s linear infinite
+}
+
+@keyframes pinkSmooth {
+    0%,to {
+        transform: scale(1)
+    }
+
+    10%,90% {
+        transform: scale(1.2)
+    }
+
+    20%,80% {
+        transform: scale(1.3)
+    }
+
+    30%,70% {
+        transform: scale(1.4)
+    }
+
+    40%,60% {
+        transform: scale(1.5)
+    }
+
+    50% {
+        transform: scale(1.5)
+    }
+}
+
+.animate-ping-smooth {
+    animation: pinkSmooth 8s linear infinite
+}
+
+@keyframes pulse {
+    50% {
+        opacity: .5
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite
+}
+
+@keyframes pulseSmooth {
+    0%,to {
+        opacity: 1
+    }
+
+    30%,70% {
+        opacity: .9
+    }
+
+    40%,60% {
+        opacity: .8
+    }
+
+    50% {
+        opacity: .7
+    }
+}
+
+.animate-pulse-smooth {
+    animation: pulseSmooth 8s linear infinite
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+.animate-spin-slow {
+    animation: spin 10s linear infinite
+}
 }

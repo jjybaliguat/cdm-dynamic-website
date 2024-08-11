@@ -1,14 +1,6 @@
+import { FeatureProps } from '@/types'
 import Image from 'next/image'
 import React from 'react'
-
-interface FeatureProps {
-    name: string,
-    description: string,
-    image: {
-        url: string;
-        alternativeText: string | null;
-      };
-}
 
 function Feature({
     name,
