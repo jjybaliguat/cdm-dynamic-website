@@ -77,7 +77,7 @@ async function Navbar() {
                 </Link>
                 <div className="hidden text-center lg:flex lg:items-center">
                     <ul className="items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex">
-                        {nav.navlinks.map((nav, index) => (
+                        {nav.navLinks.map((nav, index) => (
                         <li className="mr-1 nav__item" key={index}>
                             <Link
                             href={nav.url}

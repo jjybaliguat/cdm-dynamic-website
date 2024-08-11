@@ -82,6 +82,6 @@ export interface NavbarProps {
         logoText: LinkProps,
         logo: ImageProps,
         ctaButton: LinkProps,
-        navlinks: LinkProps[]
+        navLinks: LinkProps[]
     }
 }
