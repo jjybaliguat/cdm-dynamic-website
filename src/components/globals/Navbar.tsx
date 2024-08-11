@@ -29,7 +29,7 @@ async function loader(){
               ctaButton: {
                 populate: true
               },
-              navlinks: {
+              navLinks: {
                 populate: true
               }
             }
