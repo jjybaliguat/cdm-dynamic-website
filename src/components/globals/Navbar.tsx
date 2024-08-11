@@ -87,7 +87,7 @@ async function Navbar() {
                 </div>
             </div>
             <div className='flex items-center gap-4'>
-                <div className='relative w-[300px] h-fit rounded-full'>
+                <div className='relative w-[300px] h-fit rounded-full hidden md:block'>
                     <Input
                         className='rounded-full py-8 px-6 text-[18px] pr-16 focus:outline-none focus:ring-0 focus:border-transparent'
                         placeholder='Search'
