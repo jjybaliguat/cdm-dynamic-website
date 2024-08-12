@@ -31,7 +31,7 @@ const FacultySection: React.FC<Readonly<FacultySectionProps>> = ({ data }) => {
   const subHeadingInview = useInView(subHeadingRef);
 
   return (
-    <div ref={headingRef} className="container section-gap-top section-gap-bottom overflow-hidden">
+    <div ref={headingRef} className="container section-gap-top pb-1 overflow-hidden">
       <motion.h1
         initial={{ x: 20, opacity: 0 }}
         animate={{ x: headingInview ? 0 : 20, opacity: headingInview ? 1 : 0 }}
@@ -57,10 +57,26 @@ const FacultySection: React.FC<Readonly<FacultySectionProps>> = ({ data }) => {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        slidesPerView={'auto'}
         centerInsufficientSlides
         breakpointsBase="container"
-
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          1280: {
+            slidesPerView: 5,
+            spaceBetween: 40,
+          },
+        }}
         navigation={{
           nextEl: '.swiper-next',
           prevEl: '.swiper-prev'
@@ -68,18 +84,18 @@ const FacultySection: React.FC<Readonly<FacultySectionProps>> = ({ data }) => {
         modules={[Pagination, Navigation, Autoplay]}
       >
         {data.instructors.map((instructor, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide className='swiper-slide' key={index}>
             <InstructorCard data={instructor.data} />
           </SwiperSlide>
         ))}
       </Swiper>
       <div className='flex justify-center mt-6 gap-6 w-full'>
-        <div className="swiper-prev p-4 rounded-full outline outline-slate-900 outline-1 transition-all
+        <div className="swiper-prev p-3 rounded-full outline outline-slate-900 outline-1 transition-all
           hover:shadow-[hsl(var(--secondary))_-4px_0_0_0] hover:cursor-pointer hover:bg-[#E9FF5E]"
           onClick={handlePrevious}>
           <ChevronLeft />
         </div>
-        <div className="swiper-next p-4 rounded-full outline outline-slate-900 outline-1 transition-all
+        <div className="swiper-next p-3 rounded-full outline outline-slate-900 outline-1 transition-all
           hover:shadow-[hsl(var(--secondary))_4px_0_0_0] hover:cursor-pointer hover:bg-[#E9FF5E]"
           onClick={handleNext}>
           <ChevronRight />

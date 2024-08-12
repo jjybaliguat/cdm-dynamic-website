@@ -40,7 +40,21 @@ export default function Home() {
           buttonLink: {theme: 'secondary', url: '/', label: 'Read More', isExternal: false}
         }} />
       </div>
-      <FacultySection data={{
+      <CtaSection data={{
+        heading: "Discover Your Ideal Course Now!",
+        subHeading: "Embark on a journey of discovery with Edufast University. Explore our diverse range of courses tailored to your interests and aspirations.",
+        buttonLink: {
+          theme: 'secondary',
+          url: '/',
+          label: 'Start Learning',
+          isExternal: false
+        },
+        image: {
+          url: '/cta-img.png',
+          alternativeText: 'cta-image'
+        }
+      }}/>
+            <FacultySection data={{
         heading: 'Faculty of Excellence',
         subHeading: 'Discover the distinguished members of our faculty, each contributing to the academic excellence of our university.',
         instructors: [
@@ -95,20 +109,6 @@ export default function Home() {
           },
         ]
       }} />
-      <CtaSection data={{
-        heading: "Discover Your Ideal Course Now!",
-        subHeading: "Embark on a journey of discovery with Edufast University. Explore our diverse range of courses tailored to your interests and aspirations.",
-        buttonLink: {
-          theme: 'secondary',
-          url: '/',
-          label: 'Start Learning',
-          isExternal: false
-        },
-        image: {
-          url: '/cta-img.png',
-          alternativeText: 'cta-image'
-        }
-      }}/>
       <ReviewsSection />
       <NewsLetterSection />
     </>
