@@ -36,6 +36,23 @@ export interface CoursesSectionProps {
         courses: CourseProps[]
     }
 }
+
+export interface FacultySectionProps {
+    data: {
+        heading: string,
+        subHeading: string,
+        instructors: InstructorProps[]
+    }
+}
+
+export interface InstructorProps {
+    data: {
+        imageUrl: string,
+        name: string,
+        title: string
+    }
+}
+
 export interface CtaProps {
     data: {
         heading: string,

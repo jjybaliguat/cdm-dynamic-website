@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/Container";
 import CoursesSection from "@/components/sections/CoursesSection";
 import CtaSection from "@/components/sections/CtaSection";
+import FacultySection from "@/components/sections/FacultySection";
 import FeatureSection from "@/components/sections/FeatureSection";
 import HeroSection from "@/components/sections/HeroSection";
 import Image from "next/image";
@@ -34,6 +35,61 @@ export default function Home() {
           {name: 'Academic Excellence', description: 'Edufast University is renowned for its commitment', image: {url: '/feature-icon1.png', alternativeText: 'feature-icon'}},
         ],
         buttonLink: {theme: 'secondary', url: '/', label: 'Read More', isExternal: false}
+      }} />
+      <FacultySection data={{
+        heading: 'Faculty of Excellence',
+        subHeading: 'Discover the distinguished members of our faculty, each contributing to the academic excellence of our university.',
+        instructors: [
+          {
+            data: {
+              imageUrl: '/feature-img1.png',
+              name: 'Lorem Ipsum',
+              title: 'Lorem'
+            }
+          },
+          {
+            data: {
+              imageUrl: '/feature-img1.png',
+              name: 'Lorem Ipsum',
+              title: 'Lorem'
+            }
+          },
+          {
+            data: {
+              imageUrl: '/feature-img1.png',
+              name: 'Lorem Ipsum',
+              title: 'Lorem'
+            }
+          },
+          {
+            data: {
+              imageUrl: '/feature-img1.png',
+              name: 'Lorem Ipsum',
+              title: 'Lorem'
+            }
+          },
+          {
+            data: {
+              imageUrl: '/feature-img1.png',
+              name: 'Lorem Ipsum',
+              title: 'Lorem'
+            }
+          },
+          {
+            data: {
+              imageUrl: '/feature-img1.png',
+              name: 'Lorem Ipsum',
+              title: 'Lorem'
+            }
+          },
+          {
+            data: {
+              imageUrl: '/feature-img1.png',
+              name: 'Lorem Ipsum',
+              title: 'Lorem'
+            }
+          },
+        ]
       }} />
       <CtaSection data={{
         heading: "Discover Your Ideal Course Now!",
