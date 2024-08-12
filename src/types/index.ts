@@ -57,6 +57,7 @@ interface ButtonLink {
 }
 export interface LinkProps {
     text: string,
+    textColor?: string,
     url: string,
     isExternal: boolean
 }

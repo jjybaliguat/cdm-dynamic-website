@@ -14,7 +14,7 @@ function CourseCard({
         opacity: 1,
         transform: 'none'
     }}>
-        <div className='group pt-10 pb-10 px-8 gap-[32px] theme-transition-500 relative flex flex-col rounded-[16px] border border-neutral-20 bg-neutral-20 hover:bg-primary'>
+        <div className='group padding-t-40 padding-b-40 padding-s-32 padding-e-32 gap-32px theme-transition-4 relative flex flex-col rounded-[16px] border border-neutral-50 bg-neutral-50 hover:bg-primary'>
             <div className="w-fit rounded-full border border-neutral-30 bg-white p-6">
                  <Image
                     src="/icon1.png"
@@ -36,6 +36,13 @@ function CourseCard({
                     </div>
                 </div>
             </div>
+            <Image 
+                src="/card-vector.png"
+                alt='Card Vector'
+                height={89}
+                width={108}
+                className='theme-transition-4 visible absolute bottom-0 right-0 opacity-100 group-hover:invisible group-hover:w-0 group-hover:opacity-0'
+            />
         </div>
     </div>
   )
