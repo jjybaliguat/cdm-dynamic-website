@@ -3,6 +3,40 @@ import React from 'react'
 import CustomLink from '../ui/CustomLink'
 import CourseCard from '../ui/CourseCard'
 import { CoursesSectionProps } from '@/types'
+import { getStrapiURL } from '@/lib/utils'
+import qs from 'qs'
+
+async function loader(){
+    const { fetchData } = await import('@/lib/fetch');
+
+    const path = "api/homepage";
+    const baseUrl = getStrapiURL()
+
+    const query = qs.stringify({
+        populate: {
+          blocks: {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"]
+              },
+              buttonLink: {populate: true}
+            }
+          }
+        }
+      })
+
+    const url = new URL(path, baseUrl)
+    url.search = query
+
+    try {
+      const data = await fetchData(url.href)
+      return data
+    } catch (error) {
+      console.log(error)
+      return null
+    }
+
+}
 
 function CoursesSection({data}: Readonly<CoursesSectionProps>) {
   return (
