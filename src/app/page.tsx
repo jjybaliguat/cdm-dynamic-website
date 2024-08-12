@@ -4,6 +4,7 @@ import CtaSection from "@/components/sections/CtaSection";
 import FeatureSection from "@/components/sections/FeatureSection";
 import HeroSection from "@/components/sections/HeroSection";
 import NewsLetterSection from "@/components/sections/NewsLetterSection";
+import ReviewsSection from "@/components/sections/ReviewsSection";
 import Image from "next/image";
 
 export default function Home() {
@@ -52,6 +53,7 @@ export default function Home() {
           alternativeText: 'cta-image'
         }
       }}/>
+      <ReviewsSection />
       <NewsLetterSection />
     </>
   );

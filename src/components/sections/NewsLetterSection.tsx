@@ -5,7 +5,7 @@ import { Checkbox } from '../ui/checkbox'
 
 function NewsLetterSection() {
   return (
-    <section className='mt-40 relative z-20 overflow-hidden after:absolute after:bottom-0 after:-z-10 after:h-[85%] after:w-full after:bg-black/90 sm:after:h-[50%] lg:after:h-[50%]'>
+    <section className='relative z-20 overflow-hidden after:absolute after:bottom-0 after:-z-10 after:h-[85%] after:w-full after:bg-black/90 sm:after:h-[50%] lg:after:h-[50%]'>
         <div className='padding-t-80 padding-b-80 z-20 mx-auto max-w-[1600px] bg-primary max-xl:py-10 xl:rounded-[16px] xl:pe-[84px] xxl:ps-[152px]'> 
             <div className='container'>
                 <h1 className='h1 text-center font-semibold text-primary-foreground'>Subscribe for newsletters</h1>

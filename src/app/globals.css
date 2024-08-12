@@ -1238,7 +1238,10 @@
 }
 
 .line-horizontal-green{
-    position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(90deg,transparent 50%,rgba(223,255,94,.3) 0);background-size:10px 100%
+    position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(90deg,transparent 50%,#27e9004d 0);background-size:10px 100%
 }
-
+.swiper-wrapper{
+    transition-duration: 1400ms !important;
+    transition-timing-function: linear!important;
+}
 }

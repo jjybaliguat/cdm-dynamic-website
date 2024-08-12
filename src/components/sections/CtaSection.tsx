@@ -53,8 +53,8 @@ function CtaSection({
                     </div>
                 </div>
                 <div className='py-12 col-start-6 col-end-13 xxl:col-start-7'>
-                    <h3 className='section-heading text-primary-foreground'>Discover Your Ideal Course Now!</h3>
-                    <p className='tracking-wide pt-6 text-primary-foreground/90'>Embark on a journey of discovery with Edufast University. Explore our diverse range of courses tailored to your interests and aspirations.</p>
+                    <h3 className='section-heading text-primary-foreground'>{data.heading}</h3>
+                    <p className='tracking-wide pt-6 text-primary-foreground/90'>{data.subHeading}</p>
                     <div className='mt-10'>
                         <ButtonLink data={data.buttonLink}/>
                     </div>
