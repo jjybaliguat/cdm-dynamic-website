@@ -9,6 +9,7 @@ import ReviewsSection from "@/components/sections/ReviewsSection";
 import Image from "next/image";
 import { cn, getStrapiURL } from '@/lib/utils'
 import qs from 'qs'
+import { HomePageProps } from "@/types";
 
 async function loader(){
   const { fetchData } = await import('@/lib/fetch');
@@ -66,7 +67,7 @@ async function loader(){
 }
 
 export default async function Home() {
-  const data = await loader()
+  const data = await loader() as HomePageProps
     if(!data) return null
     // const hero = data.blocks[0]
     let heroSectionData: any = null

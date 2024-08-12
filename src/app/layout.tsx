@@ -29,7 +29,7 @@ export default function RootLayout({
         )}
       >
         <Navbar />
-        <div>{children}</div>
+        {children}
         <Footer />
       </body>
     </html>

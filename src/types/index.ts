@@ -1,4 +1,16 @@
-
+export interface HomePageProps{
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    publishedAt: string,
+    blocks: [
+        HeroSectionProps,
+        CoursesSectionProps,
+        FeatureSectionProps,
+        CtaProps,
+        FacultySectionProps,
+    ]
+}
 export interface PageProps {
     params: {
       slug: string;

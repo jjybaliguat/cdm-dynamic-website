@@ -64,7 +64,7 @@ async function dataSection({data}: Readonly<HeroSectionProps>) {
                         opacity: 1,
                         transform: 'none'
                     }}>
-                        <h1 className='h1 font-semibold max-md:text-center'>{data.heading}</h1>
+                        <h1 className='d1 font-semibold max-md:text-center'>{data.heading}</h1>
                     </div>
                 </div>
                 <div className='col-start-9 col-end-13 w-fit max-md:padding-all-32 lg:col-start-10 xxl:col-start-11'>
