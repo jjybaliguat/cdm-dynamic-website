@@ -5,46 +5,56 @@ import Link from 'next/link'
 import { ArrowUpRight, CheckCircleIcon, CircleCheck, PlusIcon } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import Image from 'next/image'
-import { HeroSectionProps } from '@/types'
 import { cn, getStrapiURL } from '@/lib/utils'
 import qs from 'qs'
+import { HeroSectionProps } from '@/types'
 
-async function loader(){
-    const { fetchData } = await import('@/lib/fetch');
+// async function loader(){
+//     const { fetchData } = await import('@/lib/fetch');
 
-    const path = "api/homepage";
-    const baseUrl = getStrapiURL()
+//     const path = "api/homepage";
+//     const baseUrl = getStrapiURL()
 
-    const query = qs.stringify({
-        populate: {
-          blocks: {
-            populate: {
-              image: {
-                fields: ["url", "alternativeText"]
-              },
-              buttonLink: {populate: true}
-            }
-          }
-        }
-      })
+//     const query = qs.stringify({
+//         populate: {
+//           blocks: {
+//             populate: {
+//               image: {
+//                 fields: ["url", "alternativeText"]
+//               },
+//               buttonLink: {populate: true},
+//             //   link: {populate: true},
+//             //   courses: {
+//             //     populate: {
+//             //       logo: {
+//             //         fields: ["url", "alternativeText"]
+//             //       },
+//             //       name: {populate: ['Course']},
+//             //       link: {populate: true}
+//             //     },
+//             //   }
+//             }
+//           }
+//         }
+//       })
 
-    const url = new URL(path, baseUrl)
-    url.search = query
+//     const url = new URL(path, baseUrl)
+//     url.search = query
 
-    try {
-      const data = await fetchData(url.href)
-      return data
-    } catch (error) {
-      console.log(error)
-      return null
-    }
+//     try {
+//       const data = await fetchData(url.href)
+//       return data
+//     } catch (error) {
+//       console.log(error)
+//       return null
+//     }
 
-}
+// }
 
-async function HeroSection() {
-    const data = await loader() as HeroSectionProps
-    if(!data) return null
-    const hero = data.blocks[0]
+async function dataSection({data}: Readonly<HeroSectionProps>) {
+    // const data = await loader() as dataSectionProps
+    // if(!data) return null
+    // const data = data.blocks[0]
   return (
     <section className='overflow-clip pt-12'>
         <div className='container'>
@@ -54,21 +64,21 @@ async function HeroSection() {
                         opacity: 1,
                         transform: 'none'
                     }}>
-                        <h1 className='h1 font-semibold max-md:text-center'>{hero.heading}</h1>
+                        <h1 className='h1 font-semibold max-md:text-center'>{data.heading}</h1>
                     </div>
                 </div>
                 <div className='col-start-9 col-end-13 w-fit max-md:padding-all-32 lg:col-start-10 xxl:col-start-11'>
                     <Link
                         href=''
-                        target={hero.buttonLink.isExternal? '_blank' : ''}
+                        target={data.buttonLink.isExternal? '_blank' : ''}
                         className={cn({
                             'hover:text-white group transition-all ease-in-out duration-300 flex items-center justify-center gap-1 rounded-full border border-neutral-500 font-semibold max-md:p-5  md:px-8 md:py-[84px]': true,
-                            'bg-primary text-primary-foreground': hero.buttonLink.theme == 'primary',
-                            'bg-secondary text-secondary-foreground': hero.buttonLink.theme == 'secondary',
-                            'btn-ghost': hero.buttonLink.theme == 'ghost',
+                            'bg-primary text-primary-foreground': data.buttonLink.theme == 'primary',
+                            'bg-secondary text-secondary-foreground': data.buttonLink.theme == 'secondary',
+                            'btn-ghost': data.buttonLink.theme == 'ghost',
                         })}
                     >
-                        <span>{hero.buttonLink.label}</span>
+                        <span>{data.buttonLink.label}</span>
                         <ArrowUpRight />
                     </Link>
                 </div>
@@ -105,7 +115,7 @@ async function HeroSection() {
                     opacity: 1,
                     transform: 'none'
                 }}>
-                    <p className='text-[20px] font-medium'>{hero.subHeading}</p>
+                    <p className='text-[20px] font-medium'>{data.subHeading}</p>
                 </div>
             </div>
             <div className='pt-12 relative'>
@@ -130,8 +140,8 @@ async function HeroSection() {
                 </div>
                 <div className='relative'>
                     <Image
-                        src={hero.image.url}
-                        alt={hero.image.alternativeText? hero.image.alternativeText : ''}
+                        src={data.image.url}
+                        alt={data.image.alternativeText? data.image.alternativeText : ''}
                         width={1608}
                         height={446}
                         className='max-w-[unset]'
@@ -146,4 +156,4 @@ async function HeroSection() {
   )
 }
 
-export default HeroSection
+export default dataSection

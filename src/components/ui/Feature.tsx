@@ -8,7 +8,7 @@ function Feature({
     image
 }: Readonly<FeatureProps>) {
   return (
-    <div className='flex items-center gap-6 bg-white rounded-[15px] p-2'>
+    <div className='flex items-center gap-6 rounded-[15px]'>
         <div className='border-neutral-30 shrink-0 rounded-full border bg-secondary p-4'>
             <Image
                 src={image.url}

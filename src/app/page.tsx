@@ -7,39 +7,91 @@ import HeroSection from "@/components/sections/HeroSection";
 import NewsLetterSection from "@/components/sections/NewsLetterSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import Image from "next/image";
+import { cn, getStrapiURL } from '@/lib/utils'
+import qs from 'qs'
 
-export default function Home() {
+async function loader(){
+  const { fetchData } = await import('@/lib/fetch');
+
+  const path = "api/homepage";
+  const baseUrl = getStrapiURL()
+
+  const query = qs.stringify({
+      populate: {
+        blocks: {
+          populate: {
+            image: {
+              fields: ["url", "alternativeText"]
+            },
+            buttonLink: {populate: true},
+            link: {populate: true},
+            courses: {
+              populate: {
+                logo: {
+                  fields: ["url", "alternativeText"]
+                },
+                name: {populate: ['Course']},
+                link: {populate: true}
+              },
+            },
+            image1: {
+              fields: ["url", "alternativeText"]
+            },
+            image2: {
+              fields: ["url", "alternativeText"]
+            },
+            feature: {
+              populate: {
+                image: {
+                  fields: ["url", "alternativeText"]
+                }
+              }
+            }
+          }
+        }
+      }
+    })
+
+  const url = new URL(path, baseUrl)
+  url.search = query
+
+  try {
+    const data = await fetchData(url.href)
+    return data
+  } catch (error) {
+    console.log(error)
+    return null
+  }
+
+}
+
+export default async function Home() {
+  const data = await loader()
+    if(!data) return null
+    // const hero = data.blocks[0]
+    let heroSectionData: any = null
+    let courseSectionData: any = null
+    let featureSectionData: any = null
+    data.blocks.map((block: any)=>{
+        if(block.__component == 'sections.hero-section'){
+          heroSectionData = block;
+        }
+        if(block.__component == 'sections.course-section'){
+          courseSectionData = block;
+        }
+        if(block.__component == 'sections.feature-section'){
+          featureSectionData = block;
+        }
+    })
   return (
     <>
-      <HeroSection />
-      <CoursesSection data={{
-        heading: 'Explore Our Courses And Build Skills',
-        subHeading: 'Welcome to our diverse and dynamic course catalog. were dedicated to providing you with access to high-quality education',
-        link: {text: 'See All Courses', url: '/', isExternal: false},
-        courses: [
-          {logo: {url: '/icon1.png', alternativeText: 'course-logo'}, name: 'Engineering & Technology', description: 'Explore the forefront of innovation and technology. Dive into courses in categories...', link: {text: 'Enroll Now', url: '/', isExternal: false}},
-          {logo: {url: '/icon1.png', alternativeText: 'course-logo'}, name: 'Engineering & Technology', description: 'Explore the forefront of innovation and technology. Dive into courses in categories...', link: {text: 'Enroll Now', url: '/', isExternal: false}},
-          {logo: {url: '/icon1.png', alternativeText: 'course-logo'}, name: 'Engineering & Technology', description: 'Explore the forefront of innovation and technology. Dive into courses in categories...', link: {text: 'Enroll Now', url: '/', isExternal: false}},
-          {logo: {url: '/icon1.png', alternativeText: 'course-logo'}, name: 'Engineering & Technology', description: 'Explore the forefront of innovation and technology. Dive into courses in categories...', link: {text: 'Enroll Now', url: '/', isExternal: false}},
-          {logo: {url: '/icon1.png', alternativeText: 'course-logo'}, name: 'Engineering & Technology', description: 'Explore the forefront of innovation and technology. Dive into courses in categories...', link: {text: 'Enroll Now', url: '/', isExternal: false}},
-          {logo: {url: '/icon1.png', alternativeText: 'course-logo'}, name: 'Engineering & Technology', description: 'Explore the forefront of innovation and technology. Dive into courses in categories...', link: {text: 'Enroll Now', url: '/', isExternal: false}},
-        ]
-      }} />
-      <div className="relative w-full bg-neutral-50 z-30">
-        <FeatureSection data={{
-          heading: 'Welcome to Edufast University',
-          subHeading: 'At Edufast University, our mission is to empower minds, inspire innovation, and foster a community of lifelong learners.',
-          image1: {url: '/feature-img1.png', alternativeText: 'feature-img1'},
-          image2: {url: '/feature-img2.png', alternativeText: 'feature-img2'},
-          feature: [
-            {name: 'Academic Excellence', description: 'Edufast University is renowned for its commitment', image: {url: '/feature-icon1.png', alternativeText: 'feature-icon'}},
-            {name: 'Academic Excellence', description: 'Edufast University is renowned for its commitment', image: {url: '/feature-icon1.png', alternativeText: 'feature-icon'}},
-            {name: 'Academic Excellence', description: 'Edufast University is renowned for its commitment', image: {url: '/feature-icon1.png', alternativeText: 'feature-icon'}},
-            {name: 'Academic Excellence', description: 'Edufast University is renowned for its commitment', image: {url: '/feature-icon1.png', alternativeText: 'feature-icon'}},
-          ],
-          buttonLink: {theme: 'secondary', url: '/', label: 'Read More', isExternal: false}
-        }} />
-      </div>
+      {heroSectionData && <HeroSection data={heroSectionData} />}
+      {courseSectionData && <CoursesSection data={courseSectionData} />}
+      {featureSectionData && 
+        <div className="relative w-full bg-neutral-50 z-30">
+          <FeatureSection data={featureSectionData} />
+        </div>      
+        }
       <CtaSection data={{
         heading: "Discover Your Ideal Course Now!",
         subHeading: "Embark on a journey of discovery with Edufast University. Explore our diverse range of courses tailored to your interests and aspirations.",

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import Feature from '../ui/Feature'
 import { FeatureSectionProps } from '@/types'
+import ButtonLink from '../ui/ButtonLink'
 
 function FeatureSection({data}: Readonly<FeatureSectionProps>) {
   return (
@@ -48,6 +49,12 @@ function FeatureSection({data}: Readonly<FeatureSectionProps>) {
                         />
                         ))}
                     </div>
+                    <ButtonLink data={{
+                        theme: data.buttonLink.theme,
+                        url: data.buttonLink.url,
+                        isExternal: data.buttonLink.isExternal,
+                        label: data.buttonLink.label
+                    }} />
                 </div>
             </div>
         </div>

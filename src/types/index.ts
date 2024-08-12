@@ -1,3 +1,4 @@
+
 export interface PageProps {
     params: {
       slug: string;
@@ -5,18 +6,12 @@ export interface PageProps {
     searchParams: {};
   }  
 export interface HeroSectionProps {
-    id: number;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    blocks: [
-        {
-            heading: string,
-            subHeading: string,
-            image: ImageProps,
-            buttonLink: ButtonLink
-        }
-    ]
+    data: {
+        heading: string,
+        subHeading: string,
+        image: ImageProps,
+        buttonLink: ButtonLink
+    }
 }
 export interface FeatureSectionProps {
     data: {
@@ -85,7 +80,9 @@ export interface FeatureProps {
 }
 export interface CourseProps {
     logo: ImageProps,
-    name: string,
+    name: {
+        name: string
+    },
     description: string,
     link: LinkProps,
 }

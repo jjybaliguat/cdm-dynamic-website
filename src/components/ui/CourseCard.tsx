@@ -28,7 +28,7 @@ function CourseCard({
                  />
             </div>
             <div className='flex flex-col gap-3'>
-                <p className='text-xl font-bold text-neutral-800 group-hover:text-primary-foreground'>{name}</p>
+                <p className='text-xl font-bold text-neutral-800 group-hover:text-primary-foreground'>{name.name}</p>
                 <div>
                     <p className='group-hover:text-primary-foreground'>{description}</p>
                     <div className='pt-6 group-hover:text-primary-foreground'>
