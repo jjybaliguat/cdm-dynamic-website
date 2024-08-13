@@ -83,8 +83,9 @@ async function loader(){
 }
 
 export default async function Home() {
-  const {blocks} = await loader() as HomePageProps
-    if(!blocks) return <NetworkError />
+  const data = await loader() as HomePageProps
+    if(!data) return <NetworkError />
+    const blocks = data.blocks
   return (
     <>
        {blocks.map((block, index) => (
