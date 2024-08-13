@@ -1,7 +1,9 @@
+"use client"
 import Image from 'next/image'
 import React from 'react'
 import ButtonLink from '../ui/ButtonLink'
 import { CtaProps } from '@/types'
+import MotionContainer from '../ui/MotionContainer'
 
 function CtaSection({
     data
@@ -40,23 +42,31 @@ function CtaSection({
                         height={69}
                         className='absolute right-5 top-16 animate-pulse xxl:right-16'
                     />
-                    <div style={{
-                        // opacity: 0, 
-                        transform: 'translateY(40px) translateZ(0px)'
-                    }}>
-                        <Image
-                            src={data.image.url}
-                            alt={data.image.alternativeText? data.image.alternativeText : ''}
-                            height={497}
-                            width={424}
-                        />
-                    </div>
+                    <MotionContainer from='bottom'>  
+                        <div style={{
+                            // opacity: 0, 
+                            transform: 'translateY(40px) translateZ(0px)'
+                        }}>
+                            <Image
+                                src={data.image.url}
+                                alt={data.image.alternativeText? data.image.alternativeText : ''}
+                                height={497}
+                                width={424}
+                            />
+                        </div>
+                    </MotionContainer>
                 </div>
                 <div className='py-12 col-start-6 col-end-13 xxl:col-start-7'>
-                    <h3 className='section-heading text-primary-foreground'>{data.heading}</h3>
-                    <p className='tracking-wide pt-6 text-primary-foreground/90'>{data.subHeading}</p>
+                    <MotionContainer from='left'>
+                        <h3 className='d4 font-semibold text-primary-foreground'>{data.heading}</h3>
+                    </MotionContainer>
+                    <MotionContainer from='right'>
+                        <p className='lText mt-6 text-neutral-400'>{data.subHeading}</p>
+                    </MotionContainer>
                     <div className='mt-10'>
+                    <MotionContainer from='bottom'>
                         <ButtonLink data={data.buttonLink}/>
+                    </MotionContainer>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import ReviewCard from '../ui/ReviewCard';
 import { ReviewsSectionProps } from '@/types';
+import MotionContainer from '../ui/MotionContainer';
 
 function ReviewsSection({data} : Readonly<ReviewsSectionProps>) {
     const navigationPrevRef = React.useRef(null)
@@ -20,8 +21,12 @@ function ReviewsSection({data} : Readonly<ReviewsSectionProps>) {
   return (
     <section className='container section-gap-top section-gap-bottom overflow-hidden'>
         <div className='mx-auto max-w-[661px] text-center'>
-            <h4 className='d4 font-semibold'>{data.heading}</h4>
+        <MotionContainer from='left'>
+            <h3 className='d4 font-semibold'>{data.heading}</h3>
+        </MotionContainer>
+        <MotionContainer from='right'>
             <p className='lText mt-6'>{data.subHeading}</p>
+        </MotionContainer>
         </div>
         <div className='padding-t-60'>
             <Swiper

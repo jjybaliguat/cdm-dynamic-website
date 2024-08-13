@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { Container } from '../layout/Container'
 import { Button } from '../ui/button'
@@ -8,6 +9,7 @@ import Image from 'next/image'
 import { cn, getStrapiURL } from '@/lib/utils'
 import qs from 'qs'
 import { HeroSectionProps } from '@/types'
+import MotionContainer from '../ui/MotionContainer'
 
 async function dataSection({data}: Readonly<HeroSectionProps>) {
   return (
@@ -15,12 +17,9 @@ async function dataSection({data}: Readonly<HeroSectionProps>) {
         <div className='container'>
             <div className='grid-cols-12 flex-col items-center justify-between gap-6 max-md:flex md:grid'>
                 <div className='col-start-1 col-end-9 lg:col-end-10 xxl:col-end-11'>
-                    <div style={{
-                        opacity: 1,
-                        transform: 'none'
-                    }}>
+                    <MotionContainer from='bottom'>
                         <h1 className='d1 font-semibold max-md:text-center'>{data.heading}</h1>
-                    </div>
+                    </MotionContainer>
                 </div>
                 <div className='col-start-9 col-end-13 w-fit max-md:padding-all-32 lg:col-start-10 xxl:col-start-11'>
                     <Link
@@ -70,7 +69,9 @@ async function dataSection({data}: Readonly<HeroSectionProps>) {
                     opacity: 1,
                     transform: 'none'
                 }}>
-                    <p className='xlText font-medium'>{data.subHeading}</p>
+                    <MotionContainer from='right'>
+                        <p className='xlText font-medium'>{data.subHeading}</p>
+                    </MotionContainer>
                 </div>
             </div>
             <div className='pt-12 relative'>

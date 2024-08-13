@@ -1,18 +1,24 @@
+"use client"
 import { Send, SendHorizontal } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { Checkbox } from '../ui/checkbox'
+import MotionContainer from '../ui/MotionContainer'
 
 function NewsLetterSection() {
   return (
     <section className='relative z-20 overflow-hidden after:absolute after:bottom-0 after:-z-10 after:h-[85%] after:w-full after:bg-black/90 sm:after:h-[50%] lg:after:h-[50%]'>
         <div className='padding-t-80 padding-b-80 z-20 mx-auto max-w-[1600px] bg-primary max-xl:py-10 xl:rounded-[16px] xl:pe-[84px] xxl:ps-[152px]'> 
             <div className='container'>
-                <h1 className='h1 text-center font-semibold text-primary-foreground'>Subscribe for newsletters</h1>
+                <MotionContainer from='left'>
+                    <h1 className='h1 text-center font-semibold text-primary-foreground'>Subscribe for newsletters</h1>
+                </MotionContainer>
             </div>
             <div className='container grid-cols-12 items-center justify-center gap-24 md:grid'>
                 <div className='col-start-3 col-end-11 text-center xl:col-start-4 xl:col-end-10'>
-                    <p className='mt-4 tracking-wide text-primary-foreground/90'>Subscribe Our Newsletter For Latest Updates</p>
+                    <MotionContainer from='right'>
+                        <p className='mt-4 tracking-wide text-primary-foreground/90'>Subscribe Our Newsletter For Latest Updates</p>
+                    </MotionContainer>
                     <div className='mt-6 xl:mt-10'>
                         <div className='flex items-center justify-between rounded-full py-3 pe-3 ps-8 bg-black'>
                             <input className='me-3 w-full bg-inherit focus:outline-none text-white placeholder:text-white'

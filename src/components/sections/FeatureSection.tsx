@@ -1,8 +1,10 @@
+"use client"
 import Image from 'next/image'
 import React from 'react'
 import Feature from '../ui/Feature'
 import { FeatureSectionProps } from '@/types'
 import ButtonLink from '../ui/ButtonLink'
+import MotionContainer from '../ui/MotionContainer'
 
 function FeatureSection({data}: Readonly<FeatureSectionProps>) {
   return (
@@ -37,8 +39,12 @@ function FeatureSection({data}: Readonly<FeatureSectionProps>) {
                 </div>
             </div>
             <div className='col-start-7 col-end-13 max-lg:pt-10'>
-                <h3 className='d4 font-semibold'>{data.heading}</h3>
-                <p className='lText mt-6'>{data.subHeading}</p>
+                <MotionContainer from='left'>
+                    <h3 className='d4 font-semibold'>{data.heading}</h3>
+                </MotionContainer>
+                <MotionContainer from='right'>
+                    <p className='lText mt-6'>{data.subHeading}</p>
+                </MotionContainer>
                 <div className='pt-10 gap-[40px] flex flex-col'>
                     <div className='gap-[28px] xl:grid xl:grid-cols-2 flex flex-col'>
                         {data.feature.map((feature, index)=>(
