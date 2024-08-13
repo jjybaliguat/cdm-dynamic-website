@@ -9,52 +9,7 @@ import { cn, getStrapiURL } from '@/lib/utils'
 import qs from 'qs'
 import { HeroSectionProps } from '@/types'
 
-// async function loader(){
-//     const { fetchData } = await import('@/lib/fetch');
-
-//     const path = "api/homepage";
-//     const baseUrl = getStrapiURL()
-
-//     const query = qs.stringify({
-//         populate: {
-//           blocks: {
-//             populate: {
-//               image: {
-//                 fields: ["url", "alternativeText"]
-//               },
-//               buttonLink: {populate: true},
-//             //   link: {populate: true},
-//             //   courses: {
-//             //     populate: {
-//             //       logo: {
-//             //         fields: ["url", "alternativeText"]
-//             //       },
-//             //       name: {populate: ['Course']},
-//             //       link: {populate: true}
-//             //     },
-//             //   }
-//             }
-//           }
-//         }
-//       })
-
-//     const url = new URL(path, baseUrl)
-//     url.search = query
-
-//     try {
-//       const data = await fetchData(url.href)
-//       return data
-//     } catch (error) {
-//       console.log(error)
-//       return null
-//     }
-
-// }
-
 async function dataSection({data}: Readonly<HeroSectionProps>) {
-    // const data = await loader() as dataSectionProps
-    // if(!data) return null
-    // const data = data.blocks[0]
   return (
     <section className='overflow-clip pt-12'>
         <div className='container'>

@@ -12,6 +12,7 @@ import InstructorCard from "../ui/InstructorCard";
 import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import { easeInOut, motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import MotionContainer from '../ui/MotionContainer';
 
 const FacultySection: React.FC<Readonly<FacultySectionProps>> = ({ data }) => {
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
@@ -34,23 +35,12 @@ const FacultySection: React.FC<Readonly<FacultySectionProps>> = ({ data }) => {
     <div ref={headingRef} className="container section-gap-top pb-1 overflow-hidden">
       <div className='container'>
         <div className='mx-auto h-fit max-w-[696px] text-center'>
-          <motion.h1
-            initial={{ x: 20, opacity: 0 }}
-            animate={{ x: headingInview ? 0 : 20, opacity: headingInview ? 1 : 0 }}
-            transition={{ duration: 1, ease: easeInOut }}
-            className='d4 font-semibold'
-          >
-            {data.heading}
-          </motion.h1>
-          <motion.p
-            ref={subHeadingRef}
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: subHeadingInview ? 0 : -20, opacity: subHeadingInview ? 1 : 0 }}
-            transition={{ duration: 1, ease: easeInOut }}
-            className="lText mt-6"
-          >
-            {data.subHeading}
-          </motion.p>
+          <MotionContainer from='right'>
+            <h4 className='d4 font-semibold'>{data.heading}</h4>
+          </MotionContainer>
+          <MotionContainer from='left'>
+            <p className='lText mt-6'>{data.subHeading}</p>
+          </MotionContainer>
         </div>
       </div>
       <div className='padding-t-60'>

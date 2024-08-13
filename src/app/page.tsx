@@ -10,6 +10,8 @@ import Image from "next/image";
 import { cn, getStrapiURL } from '@/lib/utils'
 import qs from 'qs'
 import { HomePageProps } from "@/types";
+import NetworkError from "@/components/layout/NetworkError";
+import BlockRenderer from "@/components/layout/BlockRenderer";
 
 async function loader(){
   const { fetchData } = await import('@/lib/fetch');
@@ -74,42 +76,13 @@ async function loader(){
 }
 
 export default async function Home() {
-  const data = await loader() as HomePageProps
-    if(!data) return null
-    // const hero = data.blocks[0]
-    let heroSectionData: any = null
-    let courseSectionData: any = null
-    let featureSectionData: any = null
-    let ctaSectionData: any = null
-    let facultySectionData: any = null
-    data.blocks.map((block: any)=>{
-        if(block.__component == 'sections.hero-section'){
-          heroSectionData = block;
-        }
-        if(block.__component == 'sections.course-section'){
-          courseSectionData = block;
-        }
-        if(block.__component == 'sections.feature-section'){
-          featureSectionData = block;
-        }
-        if(block.__component == 'sections.cta-section'){
-          ctaSectionData = block;
-        }
-        if(block.__component == 'sections.faculty-section'){
-          facultySectionData = block;
-        }
-    })
+  const {blocks} = await loader() as HomePageProps
+    if(!blocks) return <NetworkError />
   return (
     <>
-      {heroSectionData && <HeroSection data={heroSectionData} />}
-      {courseSectionData && <CoursesSection data={courseSectionData} />}
-      {featureSectionData && 
-        <div className="relative w-full bg-neutral-50 z-30">
-          <FeatureSection data={featureSectionData} />
-        </div>      
-        }
-      {ctaSectionData && <CtaSection data={ctaSectionData} />}
-      {facultySectionData &&  <FacultySection data={facultySectionData} />}
+       {blocks.map((block, index) => (
+        <BlockRenderer key={index} block={block} />
+      ))}
       <ReviewsSection />
       <NewsLetterSection />
     </>
