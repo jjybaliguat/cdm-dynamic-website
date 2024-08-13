@@ -12,15 +12,16 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import ReviewCard from '../ui/ReviewCard';
+import { ReviewsSectionProps } from '@/types';
 
-function ReviewsSection() {
+function ReviewsSection({data} : Readonly<ReviewsSectionProps>) {
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
   return (
     <section className='container section-gap-top section-gap-bottom overflow-hidden'>
         <div className='mx-auto max-w-[661px] text-center'>
-            <h4 className='d4 font-semibold'>Review&apos;s From Students</h4>
-            <p className='lText mt-6'>We take immense pride in the positive impact our courses and community have on learners&apos; lives.</p>
+            <h4 className='d4 font-semibold'>{data.heading}</h4>
+            <p className='lText mt-6'>{data.subHeading}</p>
         </div>
         <div className='padding-t-60'>
             <Swiper
@@ -73,18 +74,11 @@ function ReviewsSection() {
                         </button>
                     </div>
                 </div>
-                <SwiperSlide>
-                    <ReviewCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ReviewCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ReviewCard />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <ReviewCard />
-                </SwiperSlide>
+                {data.reviews.map((review, index)=>(
+                    <SwiperSlide key={index}>
+                        <ReviewCard content={review.content} name={review.name} description={review.description} image={review.image} />
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </div>
     </section>

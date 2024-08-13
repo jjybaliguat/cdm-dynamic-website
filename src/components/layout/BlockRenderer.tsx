@@ -3,6 +3,7 @@ import CoursesSection from "../sections/CoursesSection";
 import FeatureSection from "../sections/FeatureSection";
 import CtaSection from "../sections/CtaSection";
 import FacultySection from "../sections/FacultySection";
+import ReviewsSection from "../sections/ReviewsSection";
 
 export default function BlockRenderer({ block } : any){
     switch (block.__component) {
@@ -18,6 +19,8 @@ export default function BlockRenderer({ block } : any){
         return <CtaSection data={block} />;
       case 'sections.faculty-section':
         return <FacultySection data={block} />;
+      case 'sections.reviews-section':
+        return <ReviewsSection data={block} />;
       // Add more cases for different block types
       default:
         return null;

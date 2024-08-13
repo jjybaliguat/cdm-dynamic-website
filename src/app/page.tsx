@@ -56,7 +56,14 @@ async function loader(){
                   fields: ["url", "alternativeText"]
                 }
             }}
-          }}
+          }},
+          reviews: {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"]
+              }
+            }
+          }
         }
       }
     }
@@ -83,8 +90,6 @@ export default async function Home() {
        {blocks.map((block, index) => (
         <BlockRenderer key={index} block={block} />
       ))}
-      <ReviewsSection />
-      <NewsLetterSection />
     </>
   );
 }

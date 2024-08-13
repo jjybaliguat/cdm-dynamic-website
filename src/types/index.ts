@@ -9,6 +9,7 @@ export interface HomePageProps{
         FeatureSectionProps,
         CtaProps,
         FacultySectionProps,
+        ReviewsSectionProps
     ]
 }
 export interface PageProps {
@@ -111,4 +112,20 @@ export interface NavbarProps {
         ctaButton: LinkProps,
         navLinks: LinkProps[]
     }
+}
+
+export interface ReviewsSectionProps{
+    data: {
+        heading: string,
+        subHeading: string,
+        reviews: ReviewsProps[]
+    }
+}
+
+export interface ReviewsProps{
+    id?: number,
+    content: string,
+    name: string,
+    description: string,
+    image: ImageProps
 }
