@@ -17,7 +17,7 @@ function MotionContainer({
   return (
     <motion.div ref={divRef}
         initial={from === 'bottom' ? {y: 20, opacity: 0} : from === 'top'? {y: -20, opacity: 0} : from === 'right' ? {x: 20, opacity: 0} : from === 'left'? {x: -20, opacity: 0} : {}}
-        animate={from === 'bottom' || from === 'top' ? {y: isInview? 0 : 20, opacity: isInview? 1 : 0} : from === 'right' || from === 'left' ? {x: isInview? 0 : 20, opacity: isInview? 1 : 0} : {}}
+        animate={from === 'bottom' || from === 'top' ? {y: isInview? 0 : 20, opacity: isInview? 1 : 0} : from === 'right' ? {x: isInview? 0 : 20, opacity: isInview? 1 : 0} : from === 'left' ? {x: isInview? 0 : -20, opacity: isInview? 1 : 0} : {}}
         transition={{ duration: 1, ease: easeInOut }}
     >
         {children}
