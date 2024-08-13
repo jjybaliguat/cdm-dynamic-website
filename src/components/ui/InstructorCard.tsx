@@ -6,7 +6,7 @@ import { GithubIcon, InstagramIcon, LinkedinIcon, Minus, Plus } from 'lucide-rea
 import Image from 'next/image';
 import Link from 'next/link';
 
-function InstructorCard({ data }: InstructorProps) {
+function InstructorCard({ image, name, role }: InstructorProps) {
   const [toggled, setToggled] = useState(false);
 
   const toggle = () => {
@@ -14,14 +14,20 @@ function InstructorCard({ data }: InstructorProps) {
   };
 
   return (
-    <div className='gap-8 mx-auto flex w-[250px] flex-col'>
-      <div className='relative'>
+    <div className='gap-32px mx-auto flex w-fit flex-col'>
+      <div className='relative h-[306px] w-[306px]'>
         <Image
-          width={305}
-          height={305}
-          src={data.imageUrl}
-          alt='Instructor image'
-          className='rounded-2xl h-[250px]'
+          fill
+          // width={306}
+          // height={306}
+          src={image.url}
+          alt={image.alternativeText? image.alternativeText : ''}
+          className='rounded-[16px]'
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+            color:'transparent'
+          }}
         />      
         <div className={`absolute -bottom-6 right-6 w-fit p-0 ${toggled ? 'bg-secondary' : ''} rounded-full transition-colors duration-300`}>
           <div className={`flex flex-col text-primary-foreground gap-3 p-3 pb-0 ${toggled ? 'opacity-1' : 'opacity-0'} transition-all duration-300`}>
@@ -52,8 +58,8 @@ function InstructorCard({ data }: InstructorProps) {
         </div>
       </div>
       <div className='flex flex-col gap-3 px-5'>
-        <h3 className='text-xl font-bold'>{data.name}</h3>
-        <p className='text-md'>{data.title}</p>
+        <h3 className='h4 font-semibold undefined'>{name}</h3>
+        <p className='text-mText'>{role}</p>
       </div>
     </div>
   );

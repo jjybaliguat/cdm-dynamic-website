@@ -18,40 +18,47 @@ async function loader(){
   const baseUrl = getStrapiURL()
 
   const query = qs.stringify({
-      populate: {
-        blocks: {
-          populate: {
-            image: {
-              fields: ["url", "alternativeText"]
-            },
-            buttonLink: {populate: true},
-            link: {populate: true},
-            courses: {
-              populate: {
-                logo: {
-                  fields: ["url", "alternativeText"]
-                },
-                name: {populate: ['Course']},
-                link: {populate: true}
+    populate: {
+      blocks: {
+        populate: {
+          image: {
+            fields: ["url", "alternativeText"]
+          },
+          buttonLink: {populate: true},
+          link: {populate: true},
+          courses: {
+            populate: {
+              logo: {
+                fields: ["url", "alternativeText"]
               },
+              name: {populate: ['Course']},
+              link: {populate: true}
             },
-            image1: {
-              fields: ["url", "alternativeText"]
-            },
-            image2: {
-              fields: ["url", "alternativeText"]
-            },
-            feature: {
-              populate: {
-                image: {
-                  fields: ["url", "alternativeText"]
-                }
+          },
+          image1: {
+            fields: ["url", "alternativeText"]
+          },
+          image2: {
+            fields: ["url", "alternativeText"]
+          },
+          feature: {
+            populate: {
+              image: {
+                fields: ["url", "alternativeText"]
               }
             }
-          }
+          },
+          instructors: {populate: {
+            instructor: {populate: {
+              image: {
+                  fields: ["url", "alternativeText"]
+                }
+            }}
+          }}
         }
       }
-    })
+    }
+  })
 
   const url = new URL(path, baseUrl)
   url.search = query
@@ -73,6 +80,8 @@ export default async function Home() {
     let heroSectionData: any = null
     let courseSectionData: any = null
     let featureSectionData: any = null
+    let ctaSectionData: any = null
+    let facultySectionData: any = null
     data.blocks.map((block: any)=>{
         if(block.__component == 'sections.hero-section'){
           heroSectionData = block;
@@ -82,6 +91,12 @@ export default async function Home() {
         }
         if(block.__component == 'sections.feature-section'){
           featureSectionData = block;
+        }
+        if(block.__component == 'sections.cta-section'){
+          ctaSectionData = block;
+        }
+        if(block.__component == 'sections.faculty-section'){
+          facultySectionData = block;
         }
     })
   return (
@@ -93,75 +108,8 @@ export default async function Home() {
           <FeatureSection data={featureSectionData} />
         </div>      
         }
-      <CtaSection data={{
-        heading: "Discover Your Ideal Course Now!",
-        subHeading: "Embark on a journey of discovery with Edufast University. Explore our diverse range of courses tailored to your interests and aspirations.",
-        buttonLink: {
-          theme: 'secondary',
-          url: '/',
-          label: 'Start Learning',
-          isExternal: false
-        },
-        image: {
-          url: '/cta-img.png',
-          alternativeText: 'cta-image'
-        }
-      }}/>
-            <FacultySection data={{
-        heading: 'Faculty of Excellence',
-        subHeading: 'Discover the distinguished members of our faculty, each contributing to the academic excellence of our university.',
-        instructors: [
-          {
-            data: {
-              imageUrl: '/feature-img1.png',
-              name: 'Lorem Ipsum',
-              title: 'Lorem'
-            }
-          },
-          {
-            data: {
-              imageUrl: '/feature-img1.png',
-              name: 'Lorem Ipsum',
-              title: 'Lorem'
-            }
-          },
-          {
-            data: {
-              imageUrl: '/feature-img1.png',
-              name: 'Lorem Ipsum',
-              title: 'Lorem'
-            }
-          },
-          {
-            data: {
-              imageUrl: '/feature-img1.png',
-              name: 'Lorem Ipsum',
-              title: 'Lorem'
-            }
-          },
-          {
-            data: {
-              imageUrl: '/feature-img1.png',
-              name: 'Lorem Ipsum',
-              title: 'Lorem'
-            }
-          },
-          {
-            data: {
-              imageUrl: '/feature-img1.png',
-              name: 'Lorem Ipsum',
-              title: 'Lorem'
-            }
-          },
-          {
-            data: {
-              imageUrl: '/feature-img1.png',
-              name: 'Lorem Ipsum',
-              title: 'Lorem'
-            }
-          },
-        ]
-      }} />
+      {ctaSectionData && <CtaSection data={ctaSectionData} />}
+      {facultySectionData &&  <FacultySection data={facultySectionData} />}
       <ReviewsSection />
       <NewsLetterSection />
     </>

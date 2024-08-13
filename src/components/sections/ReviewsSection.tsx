@@ -63,10 +63,12 @@ function ReviewsSection() {
                     <div className='flex items-center gap-4'>
                         <button
                          ref={navigationPrevRef}
-                        className='customerSliderPrev hover:text-primary-foreground theme-transition-3 flex items-center justify-center rounded-full border border-neutral-500 bg-transparent p-3 font-semibold text-neutral-500 hover:bg-primary hover:shadow-four'>
+                        className='hover:text-primary-foreground theme-transition-3 flex items-center justify-center rounded-full border border-neutral-500 bg-transparent p-3 font-semibold text-neutral-500 hover:bg-primary hover:shadow-four
+            hover:shadow-[hsl(var(--secondary))_-4px_0_0_0]'>
                             <IconChevronLeft stroke={2} />
                         </button>
-                        <button ref={navigationNextRef} className='customerSliderNext hover:text-primary-foreground theme-transition-3 flex items-center justify-center rounded-full border border-neutral-500 bg-transparent p-3 font-semibold text-neutral-500 hover:bg-primary hover:shadow-four'>
+                        <button ref={navigationNextRef} className='hover:text-primary-foreground theme-transition-3 flex items-center justify-center rounded-full border border-neutral-500 bg-transparent p-3 font-semibold text-neutral-500 hover:bg-primary hover:shadow-four
+            hover:shadow-[hsl(var(--secondary))_4px_0_0_0] hover:cursor-pointer'>
                             <IconChevronRight stroke={2} />
                         </button>
                     </div>

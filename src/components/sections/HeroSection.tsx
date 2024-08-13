@@ -115,7 +115,7 @@ async function dataSection({data}: Readonly<HeroSectionProps>) {
                     opacity: 1,
                     transform: 'none'
                 }}>
-                    <p className='text-[20px] font-medium'>{data.subHeading}</p>
+                    <p className='xlText font-medium'>{data.subHeading}</p>
                 </div>
             </div>
             <div className='pt-12 relative'>

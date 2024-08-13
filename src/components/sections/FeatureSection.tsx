@@ -37,8 +37,8 @@ function FeatureSection({data}: Readonly<FeatureSectionProps>) {
                 </div>
             </div>
             <div className='col-start-7 col-end-13 max-lg:pt-10'>
-                <h3 className='section-heading'>{data.heading}</h3>
-                <p className='tracking-wide pt-6'>{data.subHeading}</p>
+                <h3 className='d4 font-semibold'>{data.heading}</h3>
+                <p className='lText mt-6'>{data.subHeading}</p>
                 <div className='pt-10 gap-[40px] flex flex-col'>
                     <div className='gap-[28px] xl:grid xl:grid-cols-2 flex flex-col'>
                         {data.feature.map((feature, index)=>(

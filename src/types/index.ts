@@ -48,16 +48,16 @@ export interface FacultySectionProps {
     data: {
         heading: string,
         subHeading: string,
-        instructors: InstructorProps[]
+        instructors: {
+            instructor: InstructorProps
+        }[]
     }
 }
 
 export interface InstructorProps {
-    data: {
-        imageUrl: string,
-        name: string,
-        title: string
-    }
+    name: string,
+    role: string,
+    image: ImageProps
 }
 
 export interface CtaProps {
