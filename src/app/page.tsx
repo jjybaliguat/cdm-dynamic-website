@@ -13,6 +13,8 @@ import { HomePageProps } from "@/types";
 import NetworkError from "@/components/layout/NetworkError";
 import BlockRenderer from "@/components/layout/BlockRenderer";
 
+export const revalidate = 10;
+
 async function loader(){
   const { fetchData } = await import('@/lib/fetch');
 

@@ -11,7 +11,7 @@ export async function fetchData(url: string, authToken?: string) {
   }
 
   try {
-    const response = await fetch(url, {method: 'GET', headers, cache: 'no-store'});
+    const response = await fetch(url, {method: 'GET', headers});
     const data = await response.json();
     if (!response.ok) throw new Error("Failed to fetch data");
     return flattenAttributes(data);
