@@ -80,8 +80,8 @@ async function Page({
 }) {
     const slug = params.slug
     const data = await loader(slug) as HomePageProps
-    console.log(data)
     if(!data) return <NetworkError />
+    // console.log(data)
     const blocks = data.blocks
   return (
     <>
