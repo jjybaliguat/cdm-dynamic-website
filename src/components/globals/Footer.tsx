@@ -162,7 +162,7 @@ async function Footer() {
                     </p>
                     <div className='flex gap-3 max-md:flex-col md:gap-6'>
                         {footer.footerLinks.map((link, index)=>(
-                            <Link href={link.url} target={link.isExternal ? "_blank" : ""} className='theme-transition-3 hover:text-primary'>{link.text}</Link>
+                            <Link key={index} href={link.url} target={link.isExternal ? "_blank" : ""} className='theme-transition-3 hover:text-primary'>{link.text}</Link>
                         ))}
                     </div>
                     </div>
