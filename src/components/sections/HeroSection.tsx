@@ -11,9 +11,9 @@ import qs from 'qs'
 import { HeroSectionProps } from '@/types'
 import MotionContainer from '../ui/MotionContainer'
 
-async function dataSection({data}: Readonly<HeroSectionProps>) {
+function dataSection({data}: Readonly<HeroSectionProps>) {
   return (
-    <section className='overflow-clip pt-12'>
+    <section className='section-gap-bottomoverflow-clip pt-12'>
         <div className='container'>
             <div className='grid-cols-12 flex-col items-center justify-between gap-6 max-md:flex md:grid'>
                 <div className='col-start-1 col-end-9 lg:col-end-10 xxl:col-end-11'>
@@ -23,7 +23,7 @@ async function dataSection({data}: Readonly<HeroSectionProps>) {
                 </div>
                 <div className='col-start-9 col-end-13 w-fit max-md:padding-all-32 lg:col-start-10 xxl:col-start-11'>
                     <Link
-                        href=''
+                       href={data.buttonLink.page?.slug? data.buttonLink.page?.slug : data.buttonLink.url}
                         target={data.buttonLink.isExternal? '_blank' : ''}
                         className={cn({
                             'hover:text-white group transition-all ease-in-out duration-300 flex items-center justify-center gap-1 rounded-full border border-neutral-500 font-semibold max-md:p-5  md:px-8 md:py-[84px]': true,

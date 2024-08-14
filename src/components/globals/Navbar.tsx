@@ -9,6 +9,7 @@ import { getStrapiURL } from '@/lib/utils'
 import qs from 'qs'
 import { StrapiImage } from '../layout/StrapiImage'
 import { GlobalSectionProps } from '@/types'
+import MobileMenu from '../layout/MobileMenu'
 
 async function loader(){
     const { fetchData } = await import('@/lib/fetch');
@@ -17,25 +18,27 @@ async function loader(){
     const baseUrl = getStrapiURL()
 
     const query = qs.stringify({
-        populate: {
-          navbar: {
-            populate: {
-              logoText: {
-                populate: true
-              },
-              logo: {
-                fields: ["url", "alternativeText"]
-              },
-              ctaButton: {
-                populate: true
-              },
-              navLinks: {
-                populate: true
+      populate: {
+        navbar: {
+          populate: {
+            logoText: {
+              populate: true
+            },
+            logo: {
+              fields: ["url", "alternativeText"]
+            },
+            ctaButton: {
+              populate: true
+            },
+            navLinks: {
+              populate: {
+                page: {populate: ['Page']}
               }
             }
           }
         }
-      })
+      }
+    })
 
     const url = new URL(path, baseUrl)
     url.search = query
@@ -52,12 +55,14 @@ async function loader(){
 
 async function Navbar() {
     const data = await loader() as GlobalSectionProps
+    console.log(data.navbar.navLinks)
     if(!data) return null
     const nav = data.navbar
   return (
     <div className='w-full shadow-md sticky top-0 z-50 bg-white'>
         <nav className='mx-auto relative flex flex-wrap items-center justify-between py-6 lg:justify-between px-8 xl:px-28'>
             <div className='flex items-center gap-4'>
+                <MobileMenu navbar={nav} />
                 <Link href={nav.logoText.url}>
                     <div className='flex items-center gap-2'>
                         <div className='relative h-[50px] w-[50px]'>
@@ -80,7 +85,7 @@ async function Navbar() {
                         {nav.navLinks.map((nav, index) => (
                         <li className="mr-1 nav__item" key={index}>
                             <Link
-                            href={nav.url}
+                            href={nav.page?.slug? nav.page.slug : nav.url}
                             target={nav.isExternal? '_blank' : ''}
                             className="inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-primary focus:text-primary"
                             >
@@ -91,8 +96,8 @@ async function Navbar() {
                     </ul>
                 </div>
             </div>
-            <div className='flex items-center gap-4'>
-                <div className='relative w-[300px] h-fit rounded-full hidden md:block'>
+            <div className='hidden md:flex items-center gap-4'>
+                <div className='relative w-[300px] h-fit rounded-full'>
                     <Input
                         className='rounded-full py-8 px-6 text-[18px] pr-16 focus:outline-none focus:ring-0 focus:border-transparent'
                         placeholder='Search'

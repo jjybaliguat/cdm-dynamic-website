@@ -22,7 +22,7 @@ export default function BlockRenderer({ block } : any){
         return <FacultySection data={block} />;
       case 'sections.reviews-section':
         return <ReviewsSection data={block} />;
-      case 'sections.newsletter-sectio':
+      case 'sections.newsletter-section':
         return <NewsLetterSection data={block} />;
       // Add more cases for different block types
       default:

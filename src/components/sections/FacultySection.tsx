@@ -32,7 +32,7 @@ const FacultySection: React.FC<Readonly<FacultySectionProps>> = ({ data }) => {
   const subHeadingInview = useInView(subHeadingRef);
 
   return (
-    <div ref={headingRef} className="container section-gap-top pb-1 overflow-hidden">
+    <div ref={headingRef} className="container section-gap-top section-gap-bottom pb-1 overflow-hidden">
       <div className='container'>
         <div className='mx-auto h-fit max-w-[696px] text-center'>
           <MotionContainer from='right'>

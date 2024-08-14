@@ -18,8 +18,16 @@ async function loader(){
         populate: {
           footer: {
             populate: {
-              footerLinks: {populate: true},
-              navigation: {populate: true},
+              footerLinks: {
+                populate: {
+                    page: {populate: ['Page']}
+                  }
+              },
+              navigation: {
+                populate: {
+                    page: {populate: ['Page']}
+                  }
+              },
               socialLinks: {populate: true},
               contact: {
                 populate: {
@@ -56,7 +64,8 @@ async function Footer() {
                 <div className="grid-cols-12 justify-between gap-6 md:grid">
                     <div className='gap-32px col-start-1 col-end-6 flex flex-col xxl:col-end-6'>
                         <h3 className='d4 font-semibold'>
-                            <span className=''>{footer.heading}</span>
+                            <span className='text-secondary'>{footer.heading.split(" ")[0]} </span>
+                            {footer.heading.split(" ").splice(1).join(" ")}
                         </h3>
                         <p className='lText'>{footer.subHeading}</p>
                     </div>

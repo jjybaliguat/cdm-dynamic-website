@@ -56,7 +56,7 @@ function CoursesSection({data}: Readonly<CoursesSectionProps>) {
                 <p className='lText'>{data.subHeading}</p>
               </MotionContainer>
                 <div className='pt-6'>
-                    <CustomLink text={data.link.text} url={data.link.url} isExternal={data.link.isExternal} />
+                    <CustomLink page={data.link.page} text={data.link.text} url={data.link.url} isExternal={data.link.isExternal} />
                 </div>
             </div>
         </div>

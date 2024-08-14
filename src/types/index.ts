@@ -78,13 +78,19 @@ interface ButtonLink {
     theme: string,
     url: string,
     label: string,
-    isExternal: boolean
+    isExternal: boolean,
+    page?: {
+        slug: string
+    }
 }
 export interface LinkProps {
     text: string,
     textColor?: string,
     url: string,
-    isExternal: boolean
+    isExternal: boolean,
+    page?: {
+        slug: string
+    }
 }
 export interface FeatureProps {
     name: string,
