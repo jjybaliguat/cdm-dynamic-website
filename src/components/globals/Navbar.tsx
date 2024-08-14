@@ -60,7 +60,7 @@ async function Navbar() {
   return (
     <div className='w-full shadow-md sticky top-0 z-50 bg-white'>
         <nav className='mx-auto relative flex flex-wrap items-center justify-between py-6 lg:justify-between px-8 xl:px-28'>
-            <div className='flex items-cent er gap-4'>
+            <div className='flex items-center gap-4'>
                 <MobileMenu navbar={{navLinks: nav.navLinks}} /> 
                 <Link href={nav.logoText.url}>
                     <div className='flex items-center gap-2'>

@@ -17,7 +17,7 @@ function MobileMenu({navbar}: {navbar: {navLinks: LinkProps[]}}) {
         onClick={()=>setShowNav(!showNav)}
         className='flex lg:hidden cursor-pointer' />
         )}
-        <div className={`${showNav ? 'visible' : 'hidden'} absolute left-0 top-[100px] z-[500] h-screen w-full overflow-x-hidden overflow-y-scroll pb-[106px] transition-all duration-1000  translate-x-0 overflow-auto bg-black opacity-100`}>
+        <div className={`${showNav ? 'visible' : 'hidden'} absolute left-0 top-[95px] z-[500] h-screen w-full overflow-x-hidden overflow-y-scroll pb-[106px] transition-all duration-1000  translate-x-0 overflow-auto bg-black opacity-100`}>
         <div className='container max-sm:px-2'>
             <ul className='space-y-4 text-white'>
             {navbar.navLinks.map((nav: any, index: any) => (
