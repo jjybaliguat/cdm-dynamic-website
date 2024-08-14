@@ -21,7 +21,7 @@ function MobileMenu({navbar}: {navbar: any}) {
         <div className={`${showNav ? 'visible' : 'hidden'} absolute left-0 top-[100px] z-[500] h-screen w-full overflow-x-hidden overflow-y-scroll pb-[106px] transition-all duration-1000  translate-x-0 overflow-auto bg-black opacity-100`}>
         <div className='container max-sm:px-2'>
             <ul className='space-y-4 text-white'>
-            {navbar.navLinks?.map((nav: any, index: any) => (
+            {navbar?.navLinks?.map((nav: any, index: any) => (
                 <li className="group relative cursor-pointer py-2" key={index}>
                     <Link
                     onClick={()=>setShowNav(!showNav)}
