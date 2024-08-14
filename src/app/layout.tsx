@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/globals/Navbar";
 import Footer from "@/components/globals/Footer";
+import NewsLetterSection from "@/components/sections/NewsLetterSection";
 
 export const metadata: Metadata = {
   title: "Colegio de Montalban",

@@ -1,7 +1,11 @@
+import { ContactProps } from '@/types'
 import Link from 'next/link'
 import React from 'react'
 
-function Contact() {
+function Contact({
+  icon,
+  contactLink
+} : Readonly<ContactProps>) {
   return (
     <div className='group flex items-center gap-x-5'>
         <div className='theme-transition-3 rounded-full border p-3 border-primary bg-transparent text-primary group-hover:bg-primary group-hover:text-neutral-700'>
@@ -11,8 +15,9 @@ function Contact() {
             </svg>
         </div>
         <div className='flex flex-col gap-y-1'>
-            <Link href="tel:+3567897483">(303) 555-0105</Link>
-            <Link href="tel:+3567897483">(219) 555-0144</Link>
+          {contactLink.map((link, index)=>(
+            <Link key={index} href={link.url}>{link.text}</Link>
+          ))}
         </div>
     </div>
   )

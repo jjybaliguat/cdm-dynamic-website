@@ -63,7 +63,7 @@ async function loader(){
                 fields: ["url", "alternativeText"]
               }
             }
-          }
+          },
         }
       }
     }

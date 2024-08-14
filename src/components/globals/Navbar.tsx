@@ -4,11 +4,11 @@ import React from 'react'
 import { Input } from '../ui/input'
 import { SearchIcon } from 'lucide-react'
 import { Button } from '../ui/button'
-import { NavbarProps } from '@/types'
 import ButtonLink from '../ui/ButtonLink'
 import { getStrapiURL } from '@/lib/utils'
 import qs from 'qs'
 import { StrapiImage } from '../layout/StrapiImage'
+import { GlobalSectionProps } from '@/types'
 
 async function loader(){
     const { fetchData } = await import('@/lib/fetch');
@@ -51,7 +51,7 @@ async function loader(){
 }
 
 async function Navbar() {
-    const data = await loader() as NavbarProps
+    const data = await loader() as GlobalSectionProps
     if(!data) return null
     const nav = data.navbar
   return (

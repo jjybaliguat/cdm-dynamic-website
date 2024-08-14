@@ -99,7 +99,7 @@ export interface CourseProps {
     description: string,
     link: LinkProps,
 }
-export interface NavbarProps {
+export interface GlobalSectionProps {
     id: number;
     title: string;
     description: string;
@@ -111,7 +111,24 @@ export interface NavbarProps {
         logo: ImageProps,
         ctaButton: LinkProps,
         navLinks: LinkProps[]
+    },
+    footer: {
+        heading: string,
+        subHeading: string,
+        copyrightText: any,
+        footerLinks: LinkProps[],
+        navigation: LinkProps[],
+        socialLinks: {
+            icon: string,
+            url: string
+        },
+        contact: ContactProps[]
     }
+}
+
+export interface ContactProps{
+    icon: string,
+    contactLink: LinkProps[]
 }
 
 export interface ReviewsSectionProps{
@@ -128,4 +145,12 @@ export interface ReviewsProps{
     name: string,
     description: string,
     image: ImageProps
+}
+
+export interface NewsLetterProps{
+    data: {
+        heading: string,
+        subHeading: string,
+        checkboxTermsLabel: any
+    }
 }

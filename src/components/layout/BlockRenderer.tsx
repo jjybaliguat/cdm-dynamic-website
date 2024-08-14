@@ -4,6 +4,7 @@ import FeatureSection from "../sections/FeatureSection";
 import CtaSection from "../sections/CtaSection";
 import FacultySection from "../sections/FacultySection";
 import ReviewsSection from "../sections/ReviewsSection";
+import NewsLetterSection from "../sections/NewsLetterSection";
 
 export default function BlockRenderer({ block } : any){
     switch (block.__component) {
@@ -21,6 +22,8 @@ export default function BlockRenderer({ block } : any){
         return <FacultySection data={block} />;
       case 'sections.reviews-section':
         return <ReviewsSection data={block} />;
+      case 'sections.newsletter-sectio':
+        return <NewsLetterSection data={block} />;
       // Add more cases for different block types
       default:
         return null;

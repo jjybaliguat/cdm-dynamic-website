@@ -4,20 +4,61 @@ import Contact from '../ui/Contact'
 import Image from 'next/image'
 import CustomLink from '../ui/CustomLink'
 import NewsLetterSection from '../sections/NewsLetterSection'
+import { getStrapiURL } from '@/lib/utils'
+import qs from 'qs'
+import { GlobalSectionProps } from '@/types'
 
-function Footer() {
+async function loader(){
+    const { fetchData } = await import('@/lib/fetch');
+
+    const path = "api/global";
+    const baseUrl = getStrapiURL()
+
+    const query = qs.stringify({
+        populate: {
+          footer: {
+            populate: {
+              footerLinks: {populate: true},
+              navigation: {populate: true},
+              socialLinks: {populate: true},
+              contact: {
+                populate: {
+                  contactLink: {populate: true}
+                }
+              }
+            }
+          }
+        }
+      })
+
+    const url = new URL(path, baseUrl)
+    url.search = query
+
+    try {
+      const data = await fetchData(url.href)
+      return data
+    } catch (error) {
+      console.log(error)
+      return null
+    }
+
+}
+
+async function Footer() {
+    const data = await loader() as GlobalSectionProps
+    if(!data) return null
+    const footer = data.footer
+
   return (
     <>
-        <NewsLetterSection />
         <footer className='overflow-hidden bg-black/90 text-white' >
             <div className='container section-gap-top'>
                 <div className="grid-cols-12 justify-between gap-6 md:grid">
                     <div className='gap-32px col-start-1 col-end-6 flex flex-col xxl:col-end-6'>
                         <h3 className='d4 font-semibold'>
-                            <span className='text-primary'>Let&apos;s </span>
-                            Achieve Together
+                            <span className=''>{footer.heading}</span>
                         </h3>
-                        <p className='lText'>Welcome to our diverse and dynamic course catalog.</p>
+                        <p className='lText'>{footer.subHeading}</p>
                     </div>
                     <div className='col-start-8 col-end-13 flex flex-col gap-3 md:gap-32px max-md:mt-5 xl:col-start-9 xxl:col-start-11'>
                         <h3 className='h3 font-semibold text-white'>Follow us</h3>
@@ -59,29 +100,19 @@ function Footer() {
                     <div className='relative'>
                         <h3 className='text-h3 font-semibold'>Navigation</h3>
                         <ul className='mt-8 flex flex-col gap-y-4 text-mText'>
-                            <li className='theme-transition-3 relative before:theme-transition-3 before:left-0 before:top-1/2 before:h-1 before:w-1 before:rounded-full before:bg-primary hover:translate-x-1 hover:ps-3 hover:text-primary hover:before:absolute'>
-                            <Link href="/">Home</Link> 
-                            </li>
-                            <li className='theme-transition-3 relative before:theme-transition-3 before:left-0 before:top-1/2 before:h-1 before:w-1 before:rounded-full before:bg-primary hover:translate-x-1 hover:ps-3 hover:text-primary hover:before:absolute'>
-                            <Link href="/">Admission</Link> 
-                            </li>
-                            <li className='theme-transition-3 relative before:theme-transition-3 before:left-0 before:top-1/2 before:h-1 before:w-1 before:rounded-full before:bg-primary hover:translate-x-1 hover:ps-3 hover:text-primary hover:before:absolute'>
-                            <Link href="/">About Us</Link> 
-                            </li>
-                            <li className='theme-transition-3 relative before:theme-transition-3 before:left-0 before:top-1/2 before:h-1 before:w-1 before:rounded-full before:bg-primary hover:translate-x-1 hover:ps-3 hover:text-primary hover:before:absolute'>
-                            <Link href="/">Contact</Link> 
-                            </li>
-                            <li className='theme-transition-3 relative before:theme-transition-3 before:left-0 before:top-1/2 before:h-1 before:w-1 before:rounded-full before:bg-primary hover:translate-x-1 hover:ps-3 hover:text-primary hover:before:absolute'>
-                            <Link href="/">More</Link> 
-                            </li>
+                            {footer.navigation.map((nav, index)=>(
+                                <li key={index} className='theme-transition-3 relative before:theme-transition-3 before:left-0 before:top-1/2 before:h-1 before:w-1 before:rounded-full before:bg-primary hover:translate-x-1 hover:ps-3 hover:text-primary hover:before:absolute'>
+                                    <Link href={nav.url} target={nav.isExternal ? "_blank" : ''}>{nav.text}</Link> 
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className='relative'>
                         <h3 className='text-h3 font-semibold'>Contact Us</h3>
                         <div className='mt-8 flex flex-col gap-6 text-white'>
-                            <Contact />
-                            <Contact />
-                            <Contact />
+                            {footer.contact.map((contact, index)=>(
+                                <Contact key={index} icon={contact.icon} contactLink={contact.contactLink}/>
+                            ))}
                         </div>
                     </div>
                     <div className='relative'>
@@ -130,8 +161,9 @@ function Footer() {
                         Copyright © 2024 <Link href="/" className='theme-transition-3 text-secondary hover:text-white'>CDM</Link> All Rights Reserved
                     </p>
                     <div className='flex gap-3 max-md:flex-col md:gap-6'>
-                        <Link href="/" className='theme-transition-3 hover:text-primary'>Terms & Conditions</Link>
-                        <Link href="/" className='theme-transition-3 hover:text-primary'>Privacy Policy</Link>
+                        {footer.footerLinks.map((link, index)=>(
+                            <Link href={link.url} target={link.isExternal ? "_blank" : ""} className='theme-transition-3 hover:text-primary'>{link.text}</Link>
+                        ))}
                     </div>
                     </div>
                 </div>
