@@ -103,12 +103,7 @@ export default async function Home() {
   return (
     <>
        {blocks.map((block, index) => (
-        <div key={index} className="relative">
-          <div className="absolute top-4 left-4">
-            <h3 className="text-primary">Single Type &gt; Home Page</h3>
-          </div>
-          <BlockRenderer block={block} />
-        </div>
+          <BlockRenderer key={index} block={block} />
       ))}
     </>
   );
