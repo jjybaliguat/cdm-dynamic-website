@@ -23,7 +23,7 @@ export interface HeroSectionProps {
         heading: string,
         subHeading: string,
         image: ImageProps,
-        buttonLink: ButtonLink
+        buttonLink: ButtonLinkProps
     }
 }
 export interface FeatureSectionProps {
@@ -33,7 +33,7 @@ export interface FeatureSectionProps {
         image1: ImageProps,
         image2: ImageProps,
         feature: FeatureProps[],
-        buttonLink: ButtonLink
+        buttonLink: ButtonLinkProps
     }
 }
 export interface CoursesSectionProps {
@@ -65,7 +65,7 @@ export interface CtaProps {
     data: {
         heading: string,
         subHeading: string,
-        buttonLink: ButtonLink,
+        buttonLink: ButtonLinkProps,
         image: ImageProps
     }
 }
@@ -74,7 +74,7 @@ interface ImageProps{
     url: string,
     alternativeText: string | null
 }
-interface ButtonLink {
+export interface ButtonLinkProps {
     theme: string,
     url: string,
     label: string,
@@ -112,12 +112,7 @@ export interface GlobalSectionProps {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    navbar: {
-        logoText: LinkProps,
-        logo: ImageProps,
-        ctaButton: LinkProps,
-        navLinks: LinkProps[]
-    },
+    navbar: NavBarProps,
     footer: {
         heading: string,
         subHeading: string,
@@ -130,6 +125,13 @@ export interface GlobalSectionProps {
         },
         contact: ContactProps[]
     }
+}
+
+export interface NavBarProps{
+    logoText?: LinkProps,
+    logo?: ImageProps,
+    ctaButton: LinkProps,
+    navLinks: LinkProps[]
 }
 
 export interface ContactProps{
