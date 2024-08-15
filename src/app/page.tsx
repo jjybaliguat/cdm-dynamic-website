@@ -12,6 +12,7 @@ import qs from 'qs'
 import { HomePageProps } from "@/types";
 import NetworkError from "@/components/layout/NetworkError";
 import BlockRenderer from "@/components/layout/BlockRenderer";
+import MultiStepForm from "@/components/ui/MultiStepForm";
 
 export const revalidate = 10;
 
@@ -102,6 +103,9 @@ export default async function Home() {
     const blocks = data.blocks
   return (
     <>
+        {/* <div className="h-screen w-full">
+          <MultiStepForm />
+        </div> */}
        {blocks.map((block, index) => (
           <BlockRenderer key={index} block={block} />
       ))}
