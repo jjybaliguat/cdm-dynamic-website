@@ -20,15 +20,21 @@ async function loader(slug: string){
             image: {
               fields: ["url", "alternativeText"]
             },
-            buttonLink: {populate: true},
-            link: {populate: true},
+            buttonLink: {populate: {
+              page: {populate: ['Page']}
+            }},
+            link: {populate: {
+              page: {populate: ['Page']}
+            }},
             courses: {
               populate: {
                 logo: {
                   fields: ["url", "alternativeText"]
                 },
                 name: {populate: ['Course']},
-                link: {populate: true}
+                link: {populate: {
+                  page: {populate: ['Page']}
+                }}
               },
             },
             image1: {

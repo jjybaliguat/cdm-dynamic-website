@@ -1,11 +1,11 @@
 import { Container } from "@/components/layout/Container";
-import CoursesSection from "@/components/sections/CoursesSection";
-import CtaSection from "@/components/sections/CtaSection";
-import FacultySection from "@/components/sections/FacultySection";
-import FeatureSection from "@/components/sections/FeatureSection";
-import HeroSection from "@/components/sections/HeroSection";
-import NewsLetterSection from "@/components/sections/NewsLetterSection";
-import ReviewsSection from "@/components/sections/ReviewsSection";
+import CoursesSection from "@/components/blocks/Courses";
+import CtaSection from "@/components/blocks/Cta";
+import FacultySection from "@/components/blocks/Faculty";
+import FeatureSection from "@/components/blocks/Feature";
+import HeroSection from "@/components/blocks/Hero";
+import NewsLetterSection from "@/components/blocks/NewsLetter";
+import ReviewsSection from "@/components/blocks/Reviews";
 import Image from "next/image";
 import { cn, getStrapiURL } from '@/lib/utils'
 import qs from 'qs'

@@ -3,7 +3,7 @@ import { MailIcon, MapPin, PhoneIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-function Contact({
+function Contacts({
   icon,
   contactLink
 } : Readonly<ContactProps>) {
@@ -21,4 +21,4 @@ function Contact({
   )
 }
 
-export default Contact
+export default Contacts

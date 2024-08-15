@@ -1,10 +1,11 @@
-import HeroSection from "@/components/sections/HeroSection";
-import CoursesSection from "../sections/CoursesSection";
-import FeatureSection from "../sections/FeatureSection";
-import CtaSection from "../sections/CtaSection";
-import FacultySection from "../sections/FacultySection";
-import ReviewsSection from "../sections/ReviewsSection";
-import NewsLetterSection from "../sections/NewsLetterSection";
+import HeroSection from "@/components/blocks/Hero";
+import CoursesSection from "../blocks/Courses";
+import FeatureSection from "../blocks/Feature";
+import CtaSection from "../blocks/Cta";
+import FacultySection from "../blocks/Faculty";
+import ReviewsSection from "../blocks/Reviews";
+import NewsLetterSection from "../blocks/NewsLetter";
+import Contact from "../blocks/Contact";
 
 export default function BlockRenderer({ block } : any){
     switch (block.__component) {
@@ -24,6 +25,8 @@ export default function BlockRenderer({ block } : any){
         return <ReviewsSection data={block} />;
       case 'sections.newsletter-section':
         return <NewsLetterSection data={block} />;
+      case 'sections.contact-section':
+        return <Contact />;
       // Add more cases for different block types
       default:
         return null;

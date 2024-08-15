@@ -23,7 +23,7 @@ function dataSection({data}: Readonly<HeroSectionProps>) {
                 </div>
                 <div className='col-start-9 col-end-13 w-fit max-md:padding-all-32 lg:col-start-10 xxl:col-start-11'>
                     <Link
-                       href={data.buttonLink.page?.slug? data.buttonLink.page?.slug : data.buttonLink.url}
+                       href={data.buttonLink.page?.slug? data.buttonLink.page?.slug : data.buttonLink.url ? data.buttonLink.url : '/'}
                         target={data.buttonLink.isExternal? '_blank' : ''}
                         className={cn({
                             'hover:text-white group transition-all ease-in-out duration-300 flex items-center justify-center gap-1 rounded-full border border-neutral-500 font-semibold max-md:p-5  md:px-8 md:py-[84px]': true,
