@@ -5,6 +5,8 @@ import { HomePageProps } from '@/types';
 import NetworkError from '@/components/layout/NetworkError';
 import BlockRenderer from '@/components/layout/BlockRenderer';
 
+export const revalidate = 10;
+
 async function loader(slug: string){
     const { fetchData } = await import('@/lib/fetch');
   
@@ -80,8 +82,8 @@ async function Page({
 }) {
     const slug = params.slug
     const data = await loader(slug) as HomePageProps
-    console.log(data)
     if(!data) return <NetworkError />
+    // console.log(data)
     const blocks = data.blocks
   return (
     <>
