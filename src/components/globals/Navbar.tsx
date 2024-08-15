@@ -55,8 +55,8 @@ async function loader(){
 
 async function Navbar() {
     const data = await loader() as GlobalSectionProps
-    console.log(data.navbar.navLinks)
     if(!data) return null
+    // console.log(data.navbar.navLinks)
     const nav = data.navbar
   return (
     <div className='w-full shadow-md sticky top-0 z-50 bg-white'>
