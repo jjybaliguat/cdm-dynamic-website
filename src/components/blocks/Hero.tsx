@@ -13,7 +13,7 @@ import MotionContainer from '../ui/MotionContainer'
 
 function dataSection({data}: Readonly<HeroSectionProps>) {
   return (
-    <section className='section-gap-bottomoverflow-clip pt-12'>
+    <section className='section-gap-bottom overflow-clip pt-12'>
         <div className='container'>
             <div className='grid-cols-12 flex-col items-center justify-between gap-6 max-md:flex md:grid'>
                 <div className='col-start-1 col-end-9 lg:col-end-10 xxl:col-end-11'>
