@@ -11,7 +11,7 @@ import qs from 'qs'
 import { HeroSectionProps } from '@/types'
 import MotionContainer from '../ui/MotionContainer'
 
-function dataSection({data}: Readonly<HeroSectionProps>) {
+function HeroSection({data}: Readonly<HeroSectionProps>) {
   return (
     <section className='section-gap-bottom overflow-clip pt-12'>
         <div className='container'>
@@ -112,4 +112,4 @@ function dataSection({data}: Readonly<HeroSectionProps>) {
   )
 }
 
-export default dataSection
+export default HeroSection
